@@ -5,11 +5,42 @@ import {
 } from "./types";
 
 export const setDisableBalanceOnAdd = () => {
-  return { type: DISABLE_BALANCE_ON_ADD };
+  // Get Settings from LS
+  const settings = JSON.parse(localStorage.getItem("settings"));
+
+  // Toggle
+  settings.disableBalanceOnAdd = !settings.disableBalanceOnAdd;
+
+  // Set back to LS
+  localStorage.setItem("settings", JSON.stringify(settings));
+
+  return {
+    type: DISABLE_BALANCE_ON_ADD,
+    payload: settings.disableBalanceOnAdd
+  };
 };
 export const setDisableBalanceOnEdit = () => {
-  return { type: DISABLE_BALANCE_ON_EDIT };
+  // Get Settings from LS
+  const settings = JSON.parse(localStorage.getItem("settings"));
+
+  // Toggle
+  settings.disableBalanceOnEdit = !settings.disableBalanceOnEdit;
+
+  // Set back to LS
+  localStorage.setItem("settings", JSON.stringify(settings));
+  return {
+    type: DISABLE_BALANCE_ON_EDIT,
+    payload: settings.disableBalanceOnEdit
+  };
 };
 export const setAllowRegistration = () => {
-  return { type: ALLOW_REGISTRATION };
+  // Get Settings from LS
+  const settings = JSON.parse(localStorage.getItem("settings"));
+
+  // Toggle
+  settings.allowRegistration = !settings.allowRegistration;
+
+  // Set back to LS
+  localStorage.setItem("settings", JSON.stringify(settings));
+  return { type: ALLOW_REGISTRATION, payload: settings.allowRegistration };
 };
